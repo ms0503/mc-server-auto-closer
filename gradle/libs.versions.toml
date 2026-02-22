@@ -1,0 +1,88 @@
+[libraries.aggregate-javadocs]
+module = "com.netflix.nebula:gradle-aggregate-javadocs-plugin"
+version.ref = "aggregate-javadocs"
+
+[libraries.architectury]
+module = "dev.architectury:architectury"
+version.ref = "architectury"
+
+[libraries.architectury-fabric]
+module = "dev.architectury:architectury-fabric"
+version.ref = "architectury"
+
+[libraries.architectury-forge]
+module = "dev.architectury:architectury-forge"
+version.ref = "architectury"
+
+[libraries.architectury-loom]
+module = "dev.architectury.loom:dev.architectury.loom.gradle.plugin"
+version.ref = "architectury-loom"
+
+[libraries.fabric-api]
+module = "net.fabricmc.fabric-api:fabric-api"
+version.ref = "fabric-api"
+
+[libraries.fabric-loader]
+module = "net.fabricmc:fabric-loader"
+version.ref = "fabric-loader"
+
+[libraries.forge]
+module = "net.minecraftforge:forge"
+version.ref = "forge"
+
+[libraries.jetbrains-annotations]
+module = "org.jetbrains:annotations"
+version.ref = "jetbrains-annotations"
+
+[libraries.kotlin-fabric]
+module = "net.fabricmc:fabric-language-kotlin"
+version.ref = "kotlin-fabric"
+
+[libraries.kotlin-forge]
+module = "thedarkcolour:kotlinforforge"
+version.ref = "kotlin-forge"
+
+[libraries.kotlin-plugin]
+module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
+version.ref = "kotlin"
+
+[libraries.kotlinx-coroutines-core]
+module = "org.jetbrains.kotlinx:kotlinx-coroutines-core"
+version.ref = "kotlinx-coroutines-core"
+
+[libraries.minecraft]
+module = "com.mojang:minecraft"
+version.ref = "minecraft"
+
+[libraries.modmenu]
+module = "com.terraformersmc:modmenu"
+version.ref = "modmenu"
+
+[libraries.shadow-plugin]
+module = "com.gradleup.shadow:com.gradleup.shadow.gradle.plugin"
+version.ref = "shadow"
+
+[plugins.architectury]
+id = "architectury-plugin"
+version.ref = "architectury-plugin"
+
+[plugins.architectury-loom]
+id = "dev.architectury.loom"
+version.ref = "architectury-loom"
+
+[versions]
+aggregate-javadocs = "3.0.1"
+architectury = "9.2.14"
+architectury-loom = "1.10-SNAPSHOT"
+architectury-plugin = "3.4-SNAPSHOT"
+fabric-api = "0.92.7+1.20.1"
+fabric-loader = "0.18.4"
+forge = "1.20.1-47.4.16"
+jetbrains-annotations = "26.1.0"
+kotlin = "2.+"
+kotlin-fabric = "1.13.9+kotlin.2.3.10"
+kotlin-forge = "4.11.0"
+kotlinx-coroutines-core = "1.10.2"
+minecraft = "1.20.1"
+modmenu = "7.2.2"
+shadow = "9.3.1"
