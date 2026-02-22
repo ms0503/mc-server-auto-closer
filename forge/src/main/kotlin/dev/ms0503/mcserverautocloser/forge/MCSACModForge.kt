@@ -1,7 +1,6 @@
 package dev.ms0503.mcserverautocloser.forge
 
 import dev.architectury.platform.forge.EventBuses
-import dev.ms0503.mcserverautocloser.MCSACConfig
 import dev.ms0503.mcserverautocloser.MCSACInfo
 import dev.ms0503.mcserverautocloser.MCSACMod
 import dev.ms0503.mcserverautocloser.MCSACMod.LOG
@@ -19,7 +18,6 @@ class MCSACModForge {
         MinecraftForge.EVENT_BUS.addListener(::onServerStarted)
         MinecraftForge.EVENT_BUS.addListener(::onPlayerJoined)
         MinecraftForge.EVENT_BUS.addListener(::onPlayerLeaved)
-        LOG.info("Loaded setting: Wait for joining player: ${MCSACConfig.config.waitTime} ms")
         LOG.info("${MCSACInfo.MOD_NAME} initialized!")
     }
 
