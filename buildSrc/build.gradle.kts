@@ -23,6 +23,7 @@ dependencies {
     implementation(gradleApi())
     implementation(libs.architectury.loom)
     implementation(libs.kotlin.plugin)
+    implementation(libs.minotaur)
     implementation(libs.shadow.plugin)
 }
 

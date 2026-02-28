@@ -1,7 +1,3 @@
-[libraries.aggregate-javadocs]
-module = "com.netflix.nebula:gradle-aggregate-javadocs-plugin"
-version.ref = "aggregate-javadocs"
-
 [libraries.architectury]
 module = "dev.architectury:architectury"
 version.ref = "architectury"
@@ -54,6 +50,10 @@ version.ref = "kotlinx-coroutines-core"
 module = "com.mojang:minecraft"
 version.ref = "minecraft"
 
+[libraries.minotaur]
+module = "com.modrinth.minotaur:com.modrinth.minotaur.gradle.plugin"
+version.ref = "minotaur"
+
 [libraries.modmenu]
 module = "com.terraformersmc:modmenu"
 version.ref = "modmenu"
@@ -71,7 +71,6 @@ id = "dev.architectury.loom"
 version.ref = "architectury-loom"
 
 [versions]
-aggregate-javadocs = "3.0.1"
 architectury = "9.2.14"
 architectury-loom = "1.10-SNAPSHOT"
 architectury-plugin = "3.4-SNAPSHOT"
@@ -84,5 +83,6 @@ kotlin-fabric = "1.13.9+kotlin.2.3.10"
 kotlin-forge = "4.11.0"
 kotlinx-coroutines-core = "1.10.2"
 minecraft = "1.20.1"
+minotaur = "2.+"
 modmenu = "7.2.2"
 shadow = "9.3.1"

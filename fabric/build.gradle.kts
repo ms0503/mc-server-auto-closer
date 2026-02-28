@@ -1,3 +1,5 @@
+import com.modrinth.minotaur.dependencies.DependencyType
+import com.modrinth.minotaur.dependencies.ModDependency
 import dev.ms0503.mcserverautocloser.Constants.MOD_ID
 import dev.ms0503.mcserverautocloser.Constants.MOD_NAME
 import dev.ms0503.mcserverautocloser.Constants.VERSION
@@ -56,4 +58,15 @@ tasks.processResources {
         expand(replaceProperties)
     }
     inputs.properties(replaceProperties)
+}
+
+modrinth {
+    dependencies.addAll(
+        ModDependency("Ha28R6CL", DependencyType.REQUIRED), // Fabric Language Kotlin
+        ModDependency("P7dR8mSH", DependencyType.REQUIRED), // Fabric API
+        ModDependency("lhGA9TYQ", DependencyType.REQUIRED), // Architectury API
+        ModDependency("mOgUt4GM", DependencyType.OPTIONAL) // Modmenu (optional)
+    )
+    loaders.add("fabric")
+    versionName = "v${version} for Fabric"
 }

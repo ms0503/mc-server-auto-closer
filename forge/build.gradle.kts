@@ -1,3 +1,5 @@
+import com.modrinth.minotaur.dependencies.DependencyType
+import com.modrinth.minotaur.dependencies.ModDependency
 import dev.ms0503.mcserverautocloser.Constants.MOD_ID
 import dev.ms0503.mcserverautocloser.Constants.MOD_NAME
 import dev.ms0503.mcserverautocloser.Constants.VERSION
@@ -60,4 +62,13 @@ tasks.processResources {
         expand(replaceProperties)
     }
     inputs.properties(replaceProperties)
+}
+
+modrinth {
+    dependencies.addAll(
+        ModDependency("lhGA9TYQ", DependencyType.REQUIRED), // Architectury API
+        ModDependency("ordsPcFz", DependencyType.REQUIRED) // Kotlin for Forge
+    )
+    loaders.add("forge")
+    versionName = "v${version} for Forge"
 }

@@ -1,7 +1,7 @@
 package dev.ms0503.mcserverautocloser
 
 object Constants {
-    const val VERSION = "0.2.0"
+    const val VERSION = "0.2.1-dev"
 
     const val ARCHIVES_NAME = "MCServerAutoCloser"
     const val ENABLED_PLATFORMS = "fabric,forge"

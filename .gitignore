@@ -36,6 +36,8 @@ $RECYCLE.BIN/
 .apdisk
 .com.apple.timemachine.donotpresent
 .directory
+.env
+.env.*
 .fseventsd
 .fuse_hidden*
 .gradle
@@ -60,4 +62,5 @@ out/
 run/
 runs/
 
+!.env.example
 !gradle-wrapper.jar
