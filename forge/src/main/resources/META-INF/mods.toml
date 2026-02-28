@@ -3,30 +3,30 @@ license = "MIT"
 loaderVersion = "[4.11,)"
 modLoader = "kotlinforforge"
 
+[[dependencies."${mod_id}"]]
+mandatory = true
+modId = "architectury"
+ordering = "AFTER"
+side = "BOTH"
+versionRange = "[9.2.14,)"
+
+[[dependencies."${mod_id}"]]
+mandatory = true
+modId = "forge"
+ordering = "NONE"
+side = "SERVER"
+versionRange = "[47,)"
+
+[[dependencies."${mod_id}"]]
+mandatory = true
+modId = "minecraft"
+ordering = "NONE"
+side = "SERVER"
+versionRange = "[1.20.1]"
+
 [[mods]]
 authors = "Sora Tonami"
 description = "${description}"
 displayName = "${mod_name}"
 modId = "${mod_id}"
 version = "${version}"
-
-[[dependencies."${mod_id}"]]
-modId = "forge"
-mandatory = true
-versionRange = "[47,)"
-ordering = "NONE"
-side = "SERVER"
-
-[[dependencies."${mod_id}"]]
-modId = "minecraft"
-mandatory = true
-versionRange = "[1.20.1]"
-ordering = "NONE"
-side = "SERVER"
-
-[[dependencies.mc_server_auto_closer]]
-modId = "architectury"
-mandatory = true
-versionRange = "[9.2.14,)"
-ordering = "AFTER"
-side = "BOTH"

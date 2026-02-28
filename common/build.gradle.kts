@@ -15,7 +15,6 @@ architectury {
 }
 
 loom {
-    // accessWidenerPath = file("src/main/resources/mc_server_auto_closer.accesswidener")
 }
 
 repositories {

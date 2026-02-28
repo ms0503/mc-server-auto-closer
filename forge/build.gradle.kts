@@ -19,7 +19,6 @@ architectury {
 
 loom {
     forge {
-        mixinConfig("mc_server_auto_closer.mixins.json")
     }
 }
 

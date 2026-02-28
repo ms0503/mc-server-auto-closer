@@ -3,10 +3,12 @@
 ## v0.2.1 (wip)
 
 - Added a description
+- Removed unused mixins.json
 - (Fabric only) Added Modmenu metadata
 
 
 - 説明文を追加しました
+- 未使用だったmixins.jsonを削除しました
 - (Fabricのみ) Modmenuのメタデータを追加しました
 
 ## v0.2.0

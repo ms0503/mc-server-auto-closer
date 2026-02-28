@@ -38,9 +38,7 @@
     "environment": "server",
     "id": "${mod_id}",
     "license": "MIT",
-    "mixins": [
-        "mc_server_auto_closer.mixins.json"
-    ],
+    "mixins": [],
     "name": "${mod_name}",
     "version": "${version}"
 }
