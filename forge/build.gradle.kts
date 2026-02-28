@@ -71,5 +71,6 @@ modrinth {
         ModDependency("ordsPcFz", DependencyType.REQUIRED) // Kotlin for Forge
     )
     loaders.add("forge")
+    token = env.MODRINTH_TOKEN.value
     versionName = "v${version} for Forge"
 }

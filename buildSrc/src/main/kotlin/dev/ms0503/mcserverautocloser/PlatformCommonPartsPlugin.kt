@@ -62,7 +62,6 @@ class PlatformCommonPartsPlugin : Plugin<Project> {
                 gameVersions.add(libs.findVersion("minecraft").get().toString())
                 projectId.set(rootProject.properties["modrinth_project_id"] as String)
                 syncBodyFrom.set(rootProject.file("README.md").readText())
-                token.set(System.getenv("MODRINTH_TOKEN"))
                 uploadFile.set(tasks.named<RemapJarTask>("remapJar"))
                 versionNumber.set(version.toString())
                 versionType.set("release")

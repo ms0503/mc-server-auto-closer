@@ -65,5 +65,6 @@ modrinth {
         ModDependency("mOgUt4GM", DependencyType.OPTIONAL) // Modmenu (optional)
     )
     loaders.add("fabric")
+    token = env.MODRINTH_TOKEN.value
     versionName = "v${version} for Fabric"
 }
