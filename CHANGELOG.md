@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.2.1 (wip)
+## v0.2.1
 
 - Added a description
 - Removed unused mixins.json
