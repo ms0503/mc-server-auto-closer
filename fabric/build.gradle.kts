@@ -1,5 +1,6 @@
 import com.modrinth.minotaur.dependencies.DependencyType
 import com.modrinth.minotaur.dependencies.ModDependency
+import dev.ms0503.mcserverautocloser.Constants.DESCRIPTION
 import dev.ms0503.mcserverautocloser.Constants.MOD_ID
 import dev.ms0503.mcserverautocloser.Constants.MOD_NAME
 import dev.ms0503.mcserverautocloser.Constants.VERSION
@@ -45,6 +46,7 @@ dependencies {
 
 tasks.processResources {
     val replaceProperties = mapOf(
+        "description" to DESCRIPTION,
         "mod_id" to MOD_ID,
         "mod_name" to MOD_NAME,
         "version" to VERSION

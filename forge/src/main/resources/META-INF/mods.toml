@@ -5,6 +5,7 @@ modLoader = "kotlinforforge"
 
 [[mods]]
 authors = "Sora Tonami"
+description = "${description}"
 displayName = "${mod_name}"
 modId = "${mod_id}"
 version = "${version}"

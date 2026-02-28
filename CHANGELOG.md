@@ -2,9 +2,11 @@
 
 ## v0.2.1 (wip)
 
+- Added a description
 - (Fabric only) Added Modmenu metadata
 
 
+- 説明文を追加しました
 - (Fabricのみ) Modmenuのメタデータを追加しました
 
 ## v0.2.0
