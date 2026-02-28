@@ -1,8 +1,16 @@
 # Changelog
 
+## v0.2.1 (wip)
+
+- (Fabric only) Added Modmenu metadata
+
+
+- (Fabricのみ) Modmenuのメタデータを追加しました
+
 ## v0.2.0
 
 - Added a configuration to set the time for enabling the feature
+
 
 - 機能を有効化する時間を設定するconfigを追加しました
 

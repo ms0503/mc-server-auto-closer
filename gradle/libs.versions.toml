@@ -54,10 +54,6 @@ version.ref = "minecraft"
 module = "com.modrinth.minotaur:com.modrinth.minotaur.gradle.plugin"
 version.ref = "minotaur"
 
-[libraries.modmenu]
-module = "com.terraformersmc:modmenu"
-version.ref = "modmenu"
-
 [libraries.shadow-plugin]
 module = "com.gradleup.shadow:com.gradleup.shadow.gradle.plugin"
 version.ref = "shadow"
@@ -84,5 +80,4 @@ kotlin-forge = "4.11.0"
 kotlinx-coroutines-core = "1.10.2"
 minecraft = "1.20.1"
 minotaur = "2.+"
-modmenu = "7.2.2"
 shadow = "9.3.1"

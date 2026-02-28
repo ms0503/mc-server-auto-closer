@@ -31,10 +31,6 @@ configurations {
 }
 
 repositories {
-    maven {
-        name = "TerraformersMC"
-        url = uri("https://maven.terraformersmc.com/releases")
-    }
 }
 
 dependencies {
@@ -44,7 +40,6 @@ dependencies {
     modImplementation(libs.fabric.api)
     modImplementation(libs.fabric.loader)
     modImplementation(libs.kotlin.fabric)
-    modImplementation(libs.modmenu)
     shadowBundle(project(configuration = "transformProductionFabric", path = ":common"))
 }
 

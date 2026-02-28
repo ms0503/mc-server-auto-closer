@@ -8,6 +8,16 @@
         "homepage": "https://ms0503.dev",
         "issues": "https://github.com/ms0503/mc-server-auto-closer/issues"
     },
+    "custom": {
+        "modmenu": {
+            "links": {
+                "modmenu.github_releases": "https://github.com/ms0503/mc-server-auto-closer/releases",
+                "modmenu.modrinth": "https://modrinth.com/mod/mc-server-auto-closer/settings",
+                "modmenu.twitter": "https://twitter.com/ms0503_"
+            },
+            "update_checker": true
+        }
+    },
     "depends": {
         "architectury": ">=9.2.14",
         "fabric-api": "*",
