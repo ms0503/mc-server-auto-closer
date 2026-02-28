@@ -10,8 +10,6 @@ plugins {
     `platform-common-parts`
 }
 
-version = "${VERSION}+${libs.versions.minecraft.get()}"
-
 architectury {
     fabric()
     platformSetupLoomIde()

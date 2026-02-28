@@ -1,14 +1,11 @@
 import dev.ms0503.mcserverautocloser.Constants.ENABLED_PLATFORMS
 import dev.ms0503.mcserverautocloser.Constants.MOD_ID
 import dev.ms0503.mcserverautocloser.Constants.MOD_NAME
-import dev.ms0503.mcserverautocloser.Constants.VERSION
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `common-parts`
 }
-
-version = "${VERSION}+${libs.versions.minecraft.get()}"
 
 architectury {
     common(ENABLED_PLATFORMS.split(","))
