@@ -1,5 +1,10 @@
 # MC Server Auto Closer
 
+[![License](https://img.shields.io/badge/License-MIT-00cc00.svg)](LICENSE.md)
+[![Modrinth downloads](https://img.shields.io/modrinth/dt/eNYGqJbG?label=Modrinth+downloads&logo=modrinth)](https://modrinth.com/project/eNYGqJbG)
+![Supported platforms](https://img.shields.io/badge/Fabric_%2F_Forge_%2F_NeoForged-_1.20–1.20.1,1.20.2,1.20.4-blue)
+![Supported platforms](https://img.shields.io/badge/Fabric_%2F_NeoForged-_1.20.5–1.20.6-blue)
+
 This is a mod that automatically shuts down the Minecraft server if it remains unattended for a set period of time.
 
 Minecraftサーバーが無人状態で一定時間経過した場合に、自動でサーバーを停止させるMODです。

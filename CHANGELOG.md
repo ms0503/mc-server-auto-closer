@@ -2,10 +2,14 @@
 
 ## v0.2.3 (wip)
 
-- Supported 1.20
+- Supported 1.20, 1.20.2 and 1.20.4–1.20.6
+- (1.20.2 and later) Supported NeoForged
+- (1.20.5 and later) Cut Forge support off
 
 
-- 1.20をサポート
+- 1.20・1.20.2・1.20.4–1.20.6をサポート
+- (1.20.2以降) NeoForgedをサポート
+- (1.20.5以降) Forgeサポートを打ち切り
 
 ## v0.2.2
 
