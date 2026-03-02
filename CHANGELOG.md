@@ -3,9 +3,11 @@
 ## v0.2.2 (wip)
 
 - Fixed a bug that caused the server to not start when the description was the reason
+- Lowered the minimum version of dependencies
 
 
 - 説明文が原因で起動できない問題を修正しました
+- 依存関係の最小バージョンを引き下げ
 
 ## v0.2.1
 

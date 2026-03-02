@@ -1,6 +1,6 @@
 issueTrackerURL = "https://github.com/ms0503/mc-server-auto-closer/issues"
 license = "MIT"
-loaderVersion = "[4.11,)"
+loaderVersion = "[4.3,)"
 modLoader = "kotlinforforge"
 
 [[dependencies."${mod_id}"]]
@@ -8,7 +8,7 @@ mandatory = true
 modId = "architectury"
 ordering = "AFTER"
 side = "BOTH"
-versionRange = "[9.2.14,)"
+versionRange = "[9.0.8,)"
 
 [[dependencies."${mod_id}"]]
 mandatory = true
