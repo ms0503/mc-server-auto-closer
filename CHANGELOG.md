@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.3 (wip)
+
+- Supported 1.20
+
+
+- 1.20をサポート
+
 ## v0.2.2
 
 - Fixed a bug that caused the server to not start when the description was the reason

@@ -8,21 +8,21 @@ mandatory = true
 modId = "architectury"
 ordering = "AFTER"
 side = "BOTH"
-versionRange = "[9.0.8,)"
+versionRange = "[9.0.6,)"
 
 [[dependencies."${mod_id}"]]
 mandatory = true
 modId = "forge"
 ordering = "NONE"
 side = "SERVER"
-versionRange = "[47,)"
+versionRange = "[46.0.1,)"
 
 [[dependencies."${mod_id}"]]
 mandatory = true
 modId = "minecraft"
 ordering = "NONE"
 side = "SERVER"
-versionRange = "[1.20.1]"
+versionRange = "[1.20,1.20.1]"
 
 [[mods]]
 authors = "Sora Tonami"
