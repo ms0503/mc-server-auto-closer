@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.2.2 (wip)
+## v0.2.2
 
 - Fixed a bug that caused the server to not start when the description was the reason
 - Lowered the minimum version of dependencies

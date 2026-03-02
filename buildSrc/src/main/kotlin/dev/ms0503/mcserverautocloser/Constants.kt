@@ -1,7 +1,7 @@
 package dev.ms0503.mcserverautocloser
 
 object Constants {
-    const val VERSION = "0.2.2-dev"
+    const val VERSION = "0.2.2"
 
     const val ARCHIVES_NAME = "MCServerAutoCloser"
     const val DESCRIPTION = """A mod that automatically closes the server when there are no players left.
