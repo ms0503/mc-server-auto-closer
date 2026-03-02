@@ -33,6 +33,7 @@ architectury {
 tasks.register("modrinth") {
     dependsOn(
         project(":fabric").tasks["modrinth"],
-        project(":forge").tasks["modrinth"]
+        project(":forge").tasks["modrinth"],
+        project(":neoforge").tasks["modrinth"]
     )
 }

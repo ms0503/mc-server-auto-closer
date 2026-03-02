@@ -9,7 +9,7 @@ Note: This mod is intended for server-side use. It does nothing on client-side.
 
 プレイヤーがいなくなると自動でサーバーを閉じるMOD。
 注意：このMODはサーバーサイドでの使用を想定しており、クライアントサイドでは何もしません。"""
-    const val ENABLED_PLATFORMS = "fabric,forge"
+    const val ENABLED_PLATFORMS = "fabric,forge,neoforge"
     const val MAVEN_GROUP = "dev.ms0503"
     const val MOD_ID = "mc_server_auto_closer"
     const val MOD_NAME = "MC Server Auto Closer"
