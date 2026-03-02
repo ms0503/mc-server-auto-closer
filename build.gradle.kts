@@ -22,7 +22,7 @@ idea {
         isDownloadSources = true
     }
     project {
-        languageLevel = IdeaLanguageLevel(17)
+        languageLevel = IdeaLanguageLevel(21)
     }
 }
 
@@ -33,7 +33,6 @@ architectury {
 tasks.register("modrinth") {
     dependsOn(
         project(":fabric").tasks["modrinth"],
-        project(":forge").tasks["modrinth"],
         project(":neoforge").tasks["modrinth"]
     )
 }

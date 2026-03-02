@@ -10,20 +10,15 @@ pluginManagement {
             url = uri("https://maven.fabricmc.net")
         }
         maven {
-            name = "Forge"
-            url = uri("https://files.minecraftforge.net/maven")
+            name = "NeoForged"
+            url = uri("https://maven.neoforged.net/releases")
         }
         mavenCentral()
     }
 }
 
-plugins { id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0" }
-
 rootProject.name = "mc-server-auto-closer"
 
 include("common")
-
 include("fabric")
-
-include("forge")
 include("neoforge")

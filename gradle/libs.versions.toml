@@ -6,10 +6,6 @@ version.ref = "architectury"
 module = "dev.architectury:architectury-fabric"
 version.ref = "architectury"
 
-[libraries.architectury-forge]
-module = "dev.architectury:architectury-forge"
-version.ref = "architectury"
-
 [libraries.architectury-loom]
 module = "dev.architectury.loom:dev.architectury.loom.gradle.plugin"
 version.ref = "architectury-loom"
@@ -26,10 +22,6 @@ version.ref = "fabric-api"
 module = "net.fabricmc:fabric-loader"
 version.ref = "fabric-loader"
 
-[libraries.forge]
-module = "net.minecraftforge:forge"
-version.ref = "forge"
-
 [libraries.jetbrains-annotations]
 module = "org.jetbrains:annotations"
 version.ref = "jetbrains-annotations"
@@ -38,13 +30,9 @@ version.ref = "jetbrains-annotations"
 module = "net.fabricmc:fabric-language-kotlin"
 version.ref = "kotlin-fabric"
 
-[libraries.kotlin-forge]
-module = "thedarkcolour:kotlinforforge"
-version.ref = "kotlin-forge"
-
 [libraries.kotlin-neoforge]
 module = "thedarkcolour:kotlinforforge-neoforge"
-version.ref = "kotlin-forge"
+version.ref = "kotlin-neoforge"
 
 [libraries.kotlin-plugin]
 module = "org.jetbrains.kotlin:kotlin-gradle-plugin"
@@ -83,19 +71,18 @@ id = "co.uzzu.dotenv.gradle"
 version.ref = "dotenv"
 
 [versions]
-architectury = "11.1.17"
+architectury = "12.0.29"
 architectury-loom = "1.10-SNAPSHOT"
 architectury-plugin = "3.4-SNAPSHOT"
 dotenv = "4.0.0"
-fabric-api = "0.97.3+1.20.4"
+fabric-api = "0.97.8+1.20.5"
 fabric-loader = "0.18.4"
-forge = "1.20.4-49.2.4"
 jetbrains-annotations = "26.1.0"
 kotlin = "2.+"
 kotlin-fabric = "1.13.9+kotlin.2.3.10"
-kotlin-forge = "4.12.0"
+kotlin-neoforge = "5.0.2"
 kotlinx-coroutines-core = "1.10.2"
-minecraft = "1.20.4"
+minecraft = "1.20.5"
 minotaur = "2.+"
-neoforge = "20.4.251"
+neoforge = "20.5.21-beta"
 shadow = "9.3.1"

@@ -13,8 +13,8 @@ repositories {
         url = uri("https://maven.fabricmc.net")
     }
     maven {
-        name = "Forge"
-        url = uri("https://maven.minecraftforge.net")
+        name = "NeoForged"
+        url = uri("https://maven.neoforged.net/releases")
     }
     mavenCentral()
 }

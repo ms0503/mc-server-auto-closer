@@ -56,7 +56,7 @@ class CommonPartsPlugin : Plugin<Project> {
                 options.encoding = "UTF-8"
             }
             tasks.withType<KotlinCompile>().configureEach {
-                compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
+                compilerOptions.jvmTarget.set(JvmTarget.JVM_21)
             }
             tasks.named<Jar>("jar") {
                 archiveClassifier.set("dev")
