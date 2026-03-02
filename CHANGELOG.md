@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.2.3 (wip)
+## v0.2.3
 
 - Supported 1.20, 1.20.2 and 1.20.4–1.20.6
 - (1.20.2 and later) Supported NeoForged
