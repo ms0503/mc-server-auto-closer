@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.2 (wip)
+
+- Fixed a bug that caused the server to not start when the description was the reason
+
+
+- 説明文が原因で起動できない問題を修正しました
+
 ## v0.2.1
 
 - Added a description

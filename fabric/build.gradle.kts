@@ -44,7 +44,7 @@ dependencies {
 
 tasks.processResources {
     val replaceProperties = mapOf(
-        "description" to DESCRIPTION,
+        "description" to DESCRIPTION.replace("\n", "\\n"),
         "mod_id" to MOD_ID,
         "mod_name" to MOD_NAME,
         "version" to VERSION
