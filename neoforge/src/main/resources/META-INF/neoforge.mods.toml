@@ -15,14 +15,14 @@ mandatory = true
 modId = "minecraft"
 ordering = "NONE"
 side = "SERVER"
-versionRange = "[1.20.5]"
+versionRange = "[1.20.6]"
 
 [[dependencies."${mod_id}"]]
 mandatory = true
 modId = "neoforge"
 ordering = "NONE"
 side = "SERVER"
-versionRange = "[20.5,)"
+versionRange = "[20.6.1,)"
 
 [[mods]]
 authors = "Sora Tonami"

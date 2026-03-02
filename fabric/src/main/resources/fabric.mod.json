@@ -19,12 +19,12 @@
         }
     },
     "depends": {
-        "architectury": ">=12.0.26",
-        "fabric-api": ">=0.97.5+1.20.5",
+        "architectury": ">=12.0.27",
+        "fabric-api": ">=0.97.8+1.20.6",
         "fabric-language-kotlin": ">=1.11.0+kotlin.2.0.0",
         "fabricloader": ">=0.14.24",
         "java": ">=21",
-        "minecraft": "1.20.5"
+        "minecraft": "1.20.6"
     },
     "description": "${description}",
     "entrypoints": {
