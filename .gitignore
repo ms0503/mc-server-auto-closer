@@ -42,7 +42,7 @@ $RECYCLE.BIN/
 .fuse_hidden*
 .gradle
 .gradletasknamecache
-.idea/
+.idea/runConfigurations/Minecraft_*.xml
 .idea_modules/
 .kotlin/
 .nfs*
