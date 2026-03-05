@@ -5,15 +5,15 @@
 ![Supported platforms](https://img.shields.io/badge/Fabric_%2F_Forge_%2F_NeoForged-_1.20–1.20.1,1.20.2,1.20.4-blue)
 ![Supported platforms](https://img.shields.io/badge/Fabric_%2F_NeoForged-_1.20.5–1.20.6-blue)
 
+[ja](README.ja.md)
+
 This is a mod that automatically shuts down the Minecraft server if it remains unattended for a set period of time.
 
-Minecraftサーバーが無人状態で一定時間経過した場合に、自動でサーバーを停止させるMODです。
-
-## Dependencies / 依存関係
+## Dependencies
 
 - Minecraft 1.20.4
 - Architectury API 11.0.7 or later
-- Additional dependencies per mod loader below / 以下のMODローダーごとの追加依存
+- Additional dependencies per mod loader below
 
 ### Fabric
 
@@ -31,21 +31,15 @@ Minecraftサーバーが無人状態で一定時間経過した場合に、自�
 - NeoForged 20.4.0-beta or later
 - Kotlin for Forge 4.9.0 or later
 
-## Configuration / 設定
+## Configuration
 
 Configuration file is `config/mc_server_auto_closer.json`.
-
-設定ファイルは`config/mc_server_auto_closer.json`です。
 
 ### `waitTime`
 
 The time to wait after becoming unmanned until stopping.\
 The unit is milliseconds.\
 The initial value is `900000` ms (=15 minutes).
-
-無人状態になってから停止させるまで待機する時間です。\
-単位はmsです。\
-初期値は`900000`ms(=15分)です。
 
 ### `enableTimeStart`/`enableTimeEnd`
 
@@ -57,11 +51,3 @@ For example, if `waitTime` is 15 minutes, and the last player leaves 14 minutes 
 will not activate as it will be outside the enabled time by the time `waitTime` expires.\
 If you wish to initiate the automatic stop wait check until that time, specify that time plus `waitTime` as
 `enableTimeEnd`.
-
-自動停止を有効化する時間を指定します。\
-`HH:MM:SS`で指定します。\
-初期値はそれぞれ`02:00:00`/`08:00:00`です。
-
-例えば、`waitTime`が15分だとした時、`enableTimeEnd`の14分前に最後のプレイヤーが抜けた場合、`waitTime`
-が満了する頃には有効化時間外であるため自動停止は働きません。\
-「その時間まで自動停止待機開始判定をさせたい」場合には、その時間+`waitTime`を`enableTimeEnd`に指定してください。
