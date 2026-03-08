@@ -51,6 +51,8 @@ class CommonPartsPlugin : Plugin<Project> {
             }
             tasks.withType<JavaCompile>().configureEach {
                 options.encoding = "UTF-8"
+                sourceCompatibility = "17"
+                targetCompatibility = "17"
             }
             tasks.withType<Javadoc>().configureEach {
                 options.encoding = "UTF-8"
@@ -64,8 +66,8 @@ class CommonPartsPlugin : Plugin<Project> {
             tasks.named<RemapJarTask>(REMAP_JAR_TASK_NAME) {
                 archiveClassifier.set(null as String?)
             }
-            artifacts {
-                add("archives", tasks.named(REMAP_JAR_TASK_NAME))
+            tasks.named("assemble") {
+                dependsOn(tasks.named(REMAP_JAR_TASK_NAME))
             }
         }
     }
