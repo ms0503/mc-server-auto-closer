@@ -1,0 +1,27 @@
+# For 1.20-1.20.1
+
+FROM gradle:jdk17 AS base
+RUN <<END
+    sed -i 's;\(archive\|security\)\.ubuntu\.com;ftp.jaist.ac.jp/pub/Linux;g' /etc/apt/sources.list.d/ubuntu.sources
+    apt-get update
+    apt-get upgrade
+    apt-get install --no-install-recommends --no-install-suggests -y gh
+END
+
+FROM base AS deps
+WORKDIR /build
+COPY gradle/ /build/gradle/
+COPY *.gradle.kts gradlew /build/
+COPY buildSrc/*.gradle.kts /build/buildSrc/
+COPY common/*.gradle.kts /build/common/
+COPY fabric/*.gradle.kts /build/fabric/
+COPY forge/*.gradle.kts /build/forge/
+RUN ./gradlew build --continue --no-daemon --parallel >/dev/null 2>&1 || :
+
+FROM base AS builder
+WORKDIR /build
+COPY . /build/
+COPY --from=deps /root/.gradle/ /root/.gradle/
+COPY --from=deps /build/.gradle/ /build/.gradle/
+COPY --from=deps /build/buildSrc/.gradle/ /build/buildSrc/.gradle/
+ENTRYPOINT ["/build/tools/docker-entrypoint.sh"]
