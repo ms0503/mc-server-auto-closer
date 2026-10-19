@@ -11,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.MinecraftServer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -21,8 +20,6 @@ object MCSACMod {
     private const val DAY_MS = 1000L * 60L * 60L * 24L
     private var thread: Job? = null
     private val scope = CoroutineScope(Dispatchers.Default)
-
-    fun id(name: String) = ResourceLocation(MCSACInfo.MOD_ID, name)
 
     fun init() {
         LOG.info("Loaded setting: Enable time: ${MCSACConfig.config.enableTimeStart} - ${MCSACConfig.config.enableTimeEnd}")
