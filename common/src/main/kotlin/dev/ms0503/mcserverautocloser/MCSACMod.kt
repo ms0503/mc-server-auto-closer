@@ -41,7 +41,7 @@ object MCSACMod {
                 scope.launch {
                     try {
                         stop(server)
-                    } catch(e: CancellationException) {
+                    } catch(_: CancellationException) {
                         // no-op
                     }
                 }
@@ -53,14 +53,14 @@ object MCSACMod {
                     try {
                         delay(waitForEnable)
                         stop(server)
-                    } catch(e: CancellationException) {
+                    } catch(_: CancellationException) {
                         // no-op
                     }
                 }
         }
     }
 
-    fun onPlayerJoined(server: MinecraftServer) {
+    fun onPlayerJoined(@Suppress("unused") server: MinecraftServer) {
         this.thread?.cancel()
         if(this.thread != null) {
             LOG.info("Canceled waiting for players.")
@@ -77,7 +77,7 @@ object MCSACMod {
                     scope.launch {
                         try {
                             stop(server)
-                        } catch(e: CancellationException) {
+                        } catch(_: CancellationException) {
                             // no-op
                         }
                     }
@@ -89,7 +89,7 @@ object MCSACMod {
                         try {
                             delay(waitForEnable)
                             stop(server)
-                        } catch(e: CancellationException) {
+                        } catch(_: CancellationException) {
                             // no-op
                         }
                     }
