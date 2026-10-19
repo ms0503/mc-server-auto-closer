@@ -3,6 +3,8 @@ package dev.ms0503.mcserverautocloser
 import java.time.Duration
 import java.time.LocalTime
 import java.time.temporal.ChronoUnit
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.toKotlinDuration
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,33 +30,33 @@ object MCSACMod {
     }
 
     suspend fun stop(server: MinecraftServer) {
-        delay(MCSACConfig.config.waitTime)
+        delay(MCSACConfig.config.waitTime.milliseconds)
         server.commands.performPrefixedCommand(server.createCommandSourceStack(), "stop")
     }
 
     fun onServerStarted(server: MinecraftServer) {
         val now = LocalTime.now()
         if(isBetween(now, MCSACConfig.config.enableTimeStart, MCSACConfig.config.enableTimeEnd)) {
-            this.thread = scope.launch {
-                try {
-                    stop(server)
-                } catch(e: CancellationException) {
-                    // no-op
+            this.thread =
+                scope.launch {
+                    try {
+                        stop(server)
+                    } catch(e: CancellationException) {
+                        // no-op
+                    }
                 }
-            }
             LOG.info("Waiting for players...")
         } else {
-            val waitForEnableMs = Duration.between(now, MCSACConfig.config.enableTimeStart)
-                .toMillis()
-                .let { if(it < 0) DAY_MS + it else it }
-            this.thread = scope.launch {
-                try {
-                    delay(waitForEnableMs)
-                    stop(server)
-                } catch(e: CancellationException) {
-                    // no-op
+            val waitForEnable = getWaitTimeForEnable(now)
+            this.thread =
+                scope.launch {
+                    try {
+                        delay(waitForEnable)
+                        stop(server)
+                    } catch(e: CancellationException) {
+                        // no-op
+                    }
                 }
-            }
         }
     }
 
@@ -68,35 +70,43 @@ object MCSACMod {
 
     fun onPlayerLeaved(server: MinecraftServer) {
         val now = LocalTime.now()
-        val waitForDisableMs = Duration.between(now, MCSACConfig.config.enableTimeEnd)
-            .toMillis()
-            .let { if(it < 0) DAY_MS + it else it }
+        val waitForDisable = getWaitTimeForDisable(now)
         if(server.playerCount == 1) {
-            if(MCSACConfig.config.waitTime <= waitForDisableMs) {
-                this.thread = scope.launch {
-                    try {
-                        stop(server)
-                    } catch(e: CancellationException) {
-                        // no-op
+            if(MCSACConfig.config.waitTime.milliseconds <= waitForDisable) {
+                this.thread =
+                    scope.launch {
+                        try {
+                            stop(server)
+                        } catch(e: CancellationException) {
+                            // no-op
+                        }
                     }
-                }
                 LOG.info("There is no player! Waiting for players...")
             } else {
-                val waitForEnableMs = Duration.between(now, MCSACConfig.config.enableTimeStart)
-                    .toMillis()
-                    .let { if(it < 0) DAY_MS + it else it }
-                this.thread = scope.launch {
-                    try {
-                        delay(waitForEnableMs)
-                        stop(server)
-                    } catch(e: CancellationException) {
-                        // no-op
+                val waitForEnable = getWaitTimeForEnable(now)
+                this.thread =
+                    scope.launch {
+                        try {
+                            delay(waitForEnable)
+                            stop(server)
+                        } catch(e: CancellationException) {
+                            // no-op
+                        }
                     }
-                }
                 LOG.info("There is no player! But disabling time will come soon.")
             }
         }
     }
+
+    private fun getWaitTimeForDisable(now: LocalTime) =
+        Duration.between(now, MCSACConfig.config.enableTimeEnd).toKotlinDuration().let {
+            if(it.isNegative()) DAY_MS.milliseconds + it else it
+        }
+
+    private fun getWaitTimeForEnable(now: LocalTime) =
+        Duration.between(now, MCSACConfig.config.enableTimeStart).toKotlinDuration().let {
+            if(it.isNegative()) DAY_MS.milliseconds + it else it
+        }
 
     private fun isBetween(time: LocalTime, start: LocalTime, end: LocalTime) =
         (start.until(time, ChronoUnit.MILLIS) <= 0) xor
