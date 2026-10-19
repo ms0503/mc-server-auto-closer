@@ -2,7 +2,6 @@ package dev.ms0503.mcserverautocloser
 
 import java.time.Duration
 import java.time.LocalTime
-import java.time.temporal.ChronoUnit
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.toKotlinDuration
 import kotlinx.coroutines.CancellationException
@@ -106,7 +105,9 @@ object MCSACMod {
         }
 
     private fun isBetween(time: LocalTime, start: LocalTime, end: LocalTime) =
-        (start.until(time, ChronoUnit.MILLIS) <= 0) xor
-            (time.until(end, ChronoUnit.MILLIS) < 0) xor
-            (start.until(end, ChronoUnit.MILLIS) < 0)
+        if(start < end) {
+            time in start..<end
+        } else {
+            time !in end..<start
+        }
 }
