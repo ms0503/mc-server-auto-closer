@@ -51,8 +51,8 @@ class CommonPartsPlugin : Plugin<Project> {
             }
             tasks.withType<JavaCompile>().configureEach {
                 options.encoding = "UTF-8"
-                sourceCompatibility = "17"
-                targetCompatibility = "17"
+                sourceCompatibility = "21"
+                targetCompatibility = "21"
             }
             tasks.withType<Javadoc>().configureEach {
                 options.encoding = "UTF-8"
