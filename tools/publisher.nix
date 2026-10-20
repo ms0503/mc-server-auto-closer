@@ -1,10 +1,10 @@
 {
-  bash,
+  bashNonInteractive,
   lib,
   writeScriptBin,
 }:
 let
-  substituteVars = builtins.replaceStrings [ "@bash@" ] [ (lib.getExe bash) ];
+  substituteVars = builtins.replaceStrings [ "@bash@" ] [ (lib.getExe bashNonInteractive) ];
 in
 ./publisher.sh
 |> builtins.readFile
