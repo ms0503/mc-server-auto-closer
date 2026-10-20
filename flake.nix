@@ -18,32 +18,24 @@
     inputs@{ flake-parts, systems, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       perSystem = { self', pkgs, ... }: {
-        devShells = {
-          jdk17 = pkgs.mkShell {
-            JAVA_HOME = pkgs.temurin-bin-17;
-            packages = builtins.concatLists [
-              (with pkgs; [
-                gh
-                temurin-bin-17
-              ])
-              (with self'.packages; [
-                publisher
-              ])
-            ];
+        devShells =
+          let
+            mkJdkShell =
+              jdk:
+              pkgs.mkShell {
+                JAVA_HOME = jdk;
+                packages = [
+                  jdk
+                  pkgs.gh
+                  self'.packages.publisher
+                ];
+              };
+          in
+          {
+            jdk17 = mkJdkShell pkgs.temurin-bin-17;
+            jdk21 = mkJdkShell pkgs.temurin-bin-21;
+            jdk8 = mkJdkShell pkgs.temurin-bin-8;
           };
-          jdk21 = pkgs.mkShell {
-            JAVA_HOME = pkgs.temurin-bin-21;
-            packages = builtins.concatLists [
-              (with pkgs; [
-                gh
-                temurin-bin-21
-              ])
-              (with self'.packages; [
-                publisher
-              ])
-            ];
-          };
-        };
         packages.publisher = pkgs.callPackage ./tools/publisher.nix { };
       };
       systems = import systems;
