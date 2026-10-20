@@ -1,6 +1,7 @@
 #!@bash@
 # shellcheck disable=SC2239
 set -euo pipefail
+shopt -s globstar
 
 _help() {
     printf "Usage: %s <dotenv_file> <target>\n" "$0"
