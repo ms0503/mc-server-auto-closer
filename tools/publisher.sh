@@ -19,7 +19,7 @@ _ghr() {
     local token
     local ver
     token=$1
-    ver=$(<buildSrc/src/main/kotlin/**/Constants.kt grep "const val VERSION = " | sed 's/.* = "\(.+\)"/\1/')
+    ver=$(<buildSrc/src/main/kotlin/**/Constants.kt grep "const val VERSION = " | sed 's/.* = "\(.\+\)"/\1/')
     echo "$token" | gh auth login --with-token
     gh release create "v$ver" --draft --title "v$ver"
 }
