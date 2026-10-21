@@ -60,7 +60,9 @@ repositories {
 
 dependencies {
     runtimeOnly(libs.kotlin.forge)
-    shadowBundle(project(":common"))
+    shadowBundle(project(":common")) {
+        isTransitive = false
+    }
 }
 
 tasks.processResources {
