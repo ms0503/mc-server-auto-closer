@@ -37,6 +37,7 @@
             25 # 1.7.10
             8 # 1.12.2
           ]
+          |> builtins.map builtins.toString
           |> builtins.map (ver: {
             name = "jdk${ver}";
             value = mkJdkShell pkgs."temurin-bin-${ver}";
