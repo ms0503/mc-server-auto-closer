@@ -32,10 +32,9 @@
               };
           in
           [
-            17 # 1.20-1.20.4
+            17 # 1.12.2 1.20-1.20.4
             21 # 1.20.5-1.20.6
             25 # 1.7.10
-            8 # 1.12.2
           ]
           |> builtins.map builtins.toString
           |> builtins.map (ver: {
