@@ -59,7 +59,7 @@ tasks.processResources {
 
 modrinth {
     dependencies.addAll(
-        ModDependency("1mPcAmuy", DependencyType.REQUIRED) // Forgelin-Continuous
+        ModDependency("p3H3GHwK", DependencyType.REQUIRED) // Forgelin: Legacy
     )
     loaders.add("forge")
     token.set(env.MODRINTH_TOKEN.value)
