@@ -1,35 +1,41 @@
 package dev.ms0503.mcserverautocloser.forge
 
-import dev.architectury.platform.forge.EventBuses
 import dev.ms0503.mcserverautocloser.MCSACInfo
 import dev.ms0503.mcserverautocloser.MCSACMod
-import dev.ms0503.mcserverautocloser.MCSACMod.LOG
-import net.minecraftforge.common.MinecraftForge
-import net.minecraftforge.event.entity.player.PlayerEvent
-import net.minecraftforge.event.server.ServerStartedEvent
+import dev.ms0503.mcserverautocloser.MCSACMod.log
+import net.minecraftforge.fml.common.FMLCommonHandler
 import net.minecraftforge.fml.common.Mod
-import thedarkcolour.kotlinforforge.forge.MOD_CONTEXT
+import net.minecraftforge.fml.common.Mod.EventBusSubscriber
+import net.minecraftforge.fml.common.Mod.EventHandler
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
+import net.minecraftforge.fml.common.event.FMLServerStartedEvent
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent
+import net.minecraftforge.fml.relauncher.Side
 
-@Mod(MCSACInfo.MOD_ID)
-class MCSACModForge {
-    init {
-        EventBuses.registerModEventBus(MCSACInfo.MOD_ID, MOD_CONTEXT.getKEventBus())
+@EventBusSubscriber(Side.SERVER, modid = MCSACInfo.MOD_ID)
+@Mod(modLanguageAdapter = "io.github.chaosunity.forgelin.KotlinAdapter", modid = MCSACInfo.MOD_ID, useMetadata = true)
+object MCSACModForge {
+    @EventHandler
+    fun preInit(event: FMLPreInitializationEvent) {
+        log = event.modLog
         MCSACMod.init()
-        MinecraftForge.EVENT_BUS.addListener(::onServerStarted)
-        MinecraftForge.EVENT_BUS.addListener(::onPlayerJoined)
-        MinecraftForge.EVENT_BUS.addListener(::onPlayerLeaved)
-        LOG.info("${MCSACInfo.MOD_NAME} initialized!")
+        log!!.info("${MCSACInfo.MOD_NAME} initialized!")
     }
 
-    fun onServerStarted(event: ServerStartedEvent) {
-        MCSACMod.onServerStarted(event.server)
+    @EventHandler
+    fun onServerStarted(@Suppress("unused") event: FMLServerStartedEvent) {
+        MCSACMod.onServerStarted(FMLCommonHandler.instance().minecraftServerInstance)
     }
 
-    fun onPlayerJoined(event: PlayerEvent.PlayerLoggedInEvent) {
-        MCSACMod.onPlayerJoined(event.entity.server!!)
+    @SubscribeEvent
+    fun onPlayerJoined(event: PlayerLoggedInEvent) {
+        MCSACMod.onPlayerJoined(event.player.server!!)
     }
 
-    fun onPlayerLeaved(event: PlayerEvent.PlayerLoggedOutEvent) {
-        MCSACMod.onPlayerLeaved(event.entity.server!!)
+    @SubscribeEvent
+    fun onPlayerLeaved(event: PlayerLoggedOutEvent) {
+        MCSACMod.onPlayerLeaved(event.player.server!!)
     }
 }

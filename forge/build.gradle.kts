@@ -10,54 +10,67 @@ plugins {
     `platform-common-parts`
 }
 
-architectury {
-    forge()
-    platformSetupLoomIde()
-}
-
-loom {
-    forge {
-    }
-}
+evaluationDependsOn(":common")
 
 val common: Configuration by configurations.getting
-val developmentForge: Configuration by configurations.getting
 val shadowBundle: Configuration by configurations.getting
 
 configurations {
     compileClasspath.configure {
         extendsFrom(common.get())
     }
-    developmentForge.extendsFrom(common.get())
     runtimeClasspath.configure {
         extendsFrom(common.get())
     }
 }
 
+minecraft {
+    mappings("stable", "39-1.12")
+    runs {
+        create("server") {
+            mods {
+                create(MOD_ID) {
+                    source(sourceSets["main"])
+                }
+            }
+            workingDirectory(project.file("run"))
+        }
+    }
+}
+
 repositories {
-    maven {
-        name = "Kotlin for Forge"
-        url = uri("https://thedarkcolour.github.io/KotlinForForge")
+    // // CleanroomMC's Maven repository only has 1.x
+    // maven {
+    //     name = "CleanroomMC"
+    //     url = uri("https://maven.cleanroommc.com")
+    // }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = uri("https://api.modrinth.com/maven")
+            }
+        }
+        forRepositories(fg.repository)
+        filter {
+            includeGroup("maven.modrinth")
+        }
     }
 }
 
 dependencies {
-    mappings(loom.officialMojangMappings())
-    minecraft(libs.minecraft)
-    forge(libs.forge)
-    modImplementation(libs.architectury.forge)
-    modImplementation(libs.kotlin.forge)
-    shadowBundle(project(configuration = "transformProductionForge", path = ":common"))
+    runtimeOnly(libs.kotlin.forge)
+    shadowBundle(project(":common"))
 }
 
 tasks.processResources {
     val replaceProperties = mapOf(
-        "description" to DESCRIPTION,
+        "description" to DESCRIPTION.replace("\n", "\\n"),
         "mod_id" to MOD_ID,
         "mod_name" to MOD_NAME,
         "version" to VERSION
     )
-    filesMatching("META-INF/mods.toml") {
+    filesMatching("mcmod.info") {
         expand(replaceProperties)
     }
     inputs.properties(replaceProperties)
@@ -65,8 +78,7 @@ tasks.processResources {
 
 modrinth {
     dependencies.addAll(
-        ModDependency("lhGA9TYQ", DependencyType.REQUIRED), // Architectury API
-        ModDependency("ordsPcFz", DependencyType.REQUIRED) // Kotlin for Forge
+        ModDependency("1mPcAmuy", DependencyType.REQUIRED) // Forgelin-Continuous
     )
     loaders.add("forge")
     token = env.MODRINTH_TOKEN.value

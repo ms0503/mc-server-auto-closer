@@ -1,4 +1,3 @@
-import dev.ms0503.mcserverautocloser.Constants.ENABLED_PLATFORMS
 import dev.ms0503.mcserverautocloser.Constants.MOD_ID
 import dev.ms0503.mcserverautocloser.Constants.MOD_NAME
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -7,11 +6,8 @@ plugins {
     `common-parts`
 }
 
-architectury {
-    common(ENABLED_PLATFORMS.split(","))
-}
-
-loom {
+minecraft {
+    mappings("stable", "39-1.12")
 }
 
 repositories {
@@ -19,10 +15,6 @@ repositories {
 }
 
 dependencies {
-    mappings(loom.officialMojangMappings())
-    minecraft(libs.minecraft)
-    modImplementation(libs.architectury)
-    modImplementation(libs.fabric.loader)
     implementation(kotlin("stdlib"))
     implementation(libs.kotlinx.coroutines.core)
 }

@@ -11,23 +11,22 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import net.minecraft.server.MinecraftServer
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import org.apache.logging.log4j.Logger
 
 object MCSACMod {
-    val LOG: Logger = LoggerFactory.getLogger(MCSACInfo.MOD_ID)
+    var log: Logger? = null
     private const val DAY_MS = 1000L * 60L * 60L * 24L
     private var thread: Job? = null
     private val scope = CoroutineScope(Dispatchers.Default)
 
     fun init() {
-        LOG.info("Loaded setting: Enable time: ${MCSACConfig.config.enableTimeStart} - ${MCSACConfig.config.enableTimeEnd}")
-        LOG.info("Loaded setting: Wait for joining player: ${MCSACConfig.config.waitTime} ms")
+        log!!.info("Loaded setting: Enable time: ${MCSACConfig.config.enableTimeStart} - ${MCSACConfig.config.enableTimeEnd}")
+        log!!.info("Loaded setting: Wait for joining player: ${MCSACConfig.config.waitTime} ms")
     }
 
     suspend fun stop(server: MinecraftServer) {
         delay(MCSACConfig.config.waitTime.milliseconds)
-        server.commands.performPrefixedCommand(server.createCommandSourceStack(), "stop")
+        server.commandManager.executeCommand(server, "stop")
     }
 
     fun onServerStarted(server: MinecraftServer) {
@@ -41,7 +40,7 @@ object MCSACMod {
                         // no-op
                     }
                 }
-            LOG.info("Waiting for players...")
+            log!!.info("Waiting for players...")
         } else {
             val waitForEnable = getWaitTimeForEnable(now)
             this.thread =
@@ -59,7 +58,7 @@ object MCSACMod {
     fun onPlayerJoined(@Suppress("unused") server: MinecraftServer) {
         this.thread?.cancel()
         if(this.thread != null) {
-            LOG.info("Canceled waiting for players.")
+            log!!.info("Canceled waiting for players.")
         }
         this.thread = null
     }
@@ -67,7 +66,7 @@ object MCSACMod {
     fun onPlayerLeaved(server: MinecraftServer) {
         val now = LocalTime.now()
         val waitForDisable = getWaitTimeForDisable(now)
-        if(server.playerCount == 1) {
+        if(server.playerList.currentPlayerCount == 1) {
             if(MCSACConfig.config.waitTime.milliseconds <= waitForDisable) {
                 this.thread =
                     scope.launch {
@@ -77,7 +76,7 @@ object MCSACMod {
                             // no-op
                         }
                     }
-                LOG.info("There is no player! Waiting for players...")
+                log!!.info("There is no player! Waiting for players...")
             } else {
                 val waitForEnable = getWaitTimeForEnable(now)
                 this.thread =
@@ -89,7 +88,7 @@ object MCSACMod {
                             // no-op
                         }
                     }
-                LOG.info("There is no player! But disabling time will come soon.")
+                log!!.info("There is no player! But disabling time will come soon.")
             }
         }
     }

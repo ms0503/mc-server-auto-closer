@@ -3,18 +3,19 @@ package dev.ms0503.mcserverautocloser
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar.Companion.SHADOW_JAR_TASK_NAME
 import com.modrinth.minotaur.ModrinthExtension
-import net.fabricmc.loom.task.RemapJarTask
-import net.fabricmc.loom.task.RemapTaskConfiguration.REMAP_JAR_TASK_NAME
+import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace
+import org.gradle.api.DefaultTask
+import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.jvm.tasks.Jar
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.project
-import org.gradle.kotlin.dsl.repositories
 
 class PlatformCommonPartsPlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -35,26 +36,28 @@ class PlatformCommonPartsPlugin : Plugin<Project> {
                 isCanBeConsumed = false
                 isCanBeResolved = true
             }
-            repositories {
-                maven {
-                    name = "shedaniel"
-                    url = uri("https://maven.shedaniel.me")
-                }
-            }
             dependencies {
-                common(project(configuration = "namedElements", path = ":common")) {
+                @Suppress("UnstableApiUsage")
+                common(project(":common")) {
                     isTransitive = false
                 }
             }
-            tasks.named<ShadowJar>(SHADOW_JAR_TASK_NAME) {
-                archiveClassifier.set("dev-shadow")
-                configurations.set(listOf(shadowBundle.get()))
+            tasks.named<DefaultTask>("build") {
+                dependsOn(tasks.named("reobfShadowJar"))
             }
-            tasks.named<RemapJarTask>(REMAP_JAR_TASK_NAME) {
-                inputFile.set(tasks.named<ShadowJar>(SHADOW_JAR_TASK_NAME).get().archiveFile)
+            tasks.named<Jar>("jar") {
+                finalizedBy(tasks.named("reobfJar"))
+            }
+            tasks.named<ShadowJar>(SHADOW_JAR_TASK_NAME) {
+                archiveClassifier.set("")
+                configurations.set(listOf(shadowBundle.get()))
+                finalizedBy(tasks.named("reobfShadowJar"))
             }
             tasks.named("modrinth") {
                 dependsOn(tasks.named("build"))
+            }
+            configure<NamedDomainObjectContainer<RenameJarInPlace>> {
+                create("shadowJar")
             }
             configure<ModrinthExtension> {
                 changelog.set(rootProject.file("CHANGELOG.md").readText())
@@ -62,7 +65,7 @@ class PlatformCommonPartsPlugin : Plugin<Project> {
                 gameVersions.add(libs.findVersion("minecraft").get().toString())
                 projectId.set(rootProject.properties["modrinth_project_id"] as String)
                 syncBodyFrom.set(rootProject.file("README.md").readText())
-                uploadFile.set(tasks.named<RemapJarTask>("remapJar"))
+                uploadFile.set(tasks.named("reobfShadowJar"))
                 versionNumber.set(version.toString())
                 versionType.set("release")
             }

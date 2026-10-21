@@ -8,14 +8,6 @@ plugins {
 repositories {
     gradlePluginPortal()
     maven {
-        name = "Architectury"
-        url = uri("https://maven.architectury.dev")
-    }
-    maven {
-        name = "Fabric"
-        url = uri("https://maven.fabricmc.net")
-    }
-    maven {
         name = "Forge"
         url = uri("https://maven.minecraftforge.net")
     }
@@ -24,7 +16,7 @@ repositories {
 
 dependencies {
     implementation(gradleApi())
-    implementation(libs.architectury.loom)
+    implementation(libs.forge.gradle)
     implementation(libs.kotlin.plugin)
     implementation(libs.minotaur)
     implementation(libs.shadow.plugin)
@@ -44,10 +36,10 @@ gradlePlugin {
 }
 
 tasks.withType<JavaCompile>().configureEach {
-    sourceCompatibility = "17"
-    targetCompatibility = "17"
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.8"
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-    compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
+    compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
 }

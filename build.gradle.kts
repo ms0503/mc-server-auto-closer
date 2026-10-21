@@ -4,10 +4,9 @@ import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
 
 plugins {
     `java-library`
-    alias(libs.plugins.architectury)
     alias(libs.plugins.dotenv)
     base
-    id(libs.plugins.architectury.loom.get().pluginId) apply false // common-partsがclasspathに追加しているためID参照のみ
+    id(libs.plugins.forge.gradle.get().pluginId) apply false // common-partsがclasspathに追加しているためID参照のみ
     idea
     java
     kotlin("jvm")
@@ -16,23 +15,20 @@ plugins {
 group = MAVEN_GROUP
 version = "${VERSION}+${libs.versions.minecraft.get()}"
 
+repositories {
+    mavenCentral()
+}
+
 idea {
     module {
         isDownloadJavadoc = true
         isDownloadSources = true
     }
     project {
-        languageLevel = IdeaLanguageLevel(17)
+        languageLevel = IdeaLanguageLevel(8)
     }
 }
 
-architectury {
-    minecraft = libs.versions.minecraft.get()
-}
-
 tasks.register("modrinth") {
-    dependsOn(
-        project(":fabric").tasks["modrinth"],
-        project(":forge").tasks["modrinth"]
-    )
+    dependsOn(project(":forge").tasks["modrinth"])
 }
