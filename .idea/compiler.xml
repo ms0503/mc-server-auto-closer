@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8">
-      <module name="dev.ms0503.mc-server-auto-closer.main" target="17" />
-      <module name="dev.ms0503.mc-server-auto-closer.test" target="17" />
-      <module name="mc-server-auto-closer-1.12.2.mc-server-auto-closer.buildSrc" target="17" />
-      <module name="mc-server-auto-closer-1.12.2.mc-server-auto-closer.buildSrc.main~1" target="1.8" />
-      <module name="mc-server-auto-closer-1.12.2.mc-server-auto-closer.buildSrc.test~1" target="1.8" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8" />
   </component>
 </project>

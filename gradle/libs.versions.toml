@@ -3,7 +3,7 @@ module = "net.minecraftforge:forge"
 version.ref = "forge"
 
 [libraries.forge-gradle]
-module = "net.minecraftforge.gradle:ForgeGradle"
+module = "com.gtnewhorizons:retrofuturagradle"
 version.ref = "forge-gradle"
 
 [libraries.jetbrains-annotations]
@@ -11,8 +11,7 @@ module = "org.jetbrains:annotations"
 version.ref = "jetbrains-annotations"
 
 [libraries.kotlin-forge]
-# module = "io.github.chaosunity.forgelin:Forgelin-Continuous" # CleanroomMC's Maven repository only has 1.x
-module = "maven.modrinth:forgelin-continuous"
+module = "com.falsepattern:forgelin-mc1.7.10"
 version.ref = "kotlin-forge"
 
 [libraries.kotlin-plugin]
@@ -36,17 +35,17 @@ id = "co.uzzu.dotenv.gradle"
 version.ref = "dotenv"
 
 [plugins.forge-gradle]
-id = "net.minecraftforge.gradle"
+id = "com.gtnewhorizons.retrofuturagradle"
 version.ref = "forge-gradle"
 
 [versions]
 dotenv = "4.0.0"
-forge = "1.12.2-14.23.5.2864"
-forge-gradle = "6.+"
+forge = "1.7.10-10.13.4.1614-1.7.10"
+forge-gradle = "2.+"
 jetbrains-annotations = "26.1.0"
-kotlin = "2.4.20"
-kotlin-forge = "2.4.20.0"
+kotlin = "2.4.10"
+kotlin-forge = "2.4.3-2.4.10"
 kotlinx-coroutines-core = "1.11.0"
-minecraft = "1.12.2"
+minecraft = "1.7.10"
 minotaur = "2.+"
-shadow = "9.2.+"
+shadow = "9.+"

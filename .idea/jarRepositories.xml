@@ -106,5 +106,10 @@
       <option name="name" value="Modrinth" />
       <option name="url" value="https://api.modrinth.com/maven" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="mavenpattern" />
+      <option name="name" value="mavenpattern" />
+      <option name="url" value="https://mvn.falsepattern.com/releases" />
+    </remote-repository>
   </component>
 </project>

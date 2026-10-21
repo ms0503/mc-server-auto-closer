@@ -4,7 +4,7 @@
 
 ## v0.2.5 (wip)
 
-- Supported 1.12.2
+- Supported 1.7.10 and 1.12.2
 
 ## v0.2.4
 

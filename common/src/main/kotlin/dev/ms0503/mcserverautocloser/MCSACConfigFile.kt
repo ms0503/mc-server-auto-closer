@@ -1,10 +1,10 @@
 package dev.ms0503.mcserverautocloser
 
+// Platform-dependent code to improve compatibility with new version
+import cpw.mods.fml.common.Loader
 import dev.ms0503.mcserverautocloser.MCSACInfo.MOD_ID
 import java.io.File
 import java.nio.file.Path
-// Platform-dependent code to improve compatibility with new version
-import net.minecraftforge.fml.common.Loader
 
 object MCSACConfigFile {
     fun get(): File = getConfigDir().resolve("${MOD_ID}.json").toFile()

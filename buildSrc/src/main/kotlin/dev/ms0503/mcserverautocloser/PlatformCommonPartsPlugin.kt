@@ -2,10 +2,8 @@ package dev.ms0503.mcserverautocloser
 
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar.Companion.SHADOW_JAR_TASK_NAME
+import com.gtnewhorizons.retrofuturagradle.mcp.ReobfuscatedJar
 import com.modrinth.minotaur.ModrinthExtension
-import net.minecraftforge.gradle.userdev.tasks.RenameJarInPlace
-import org.gradle.api.DefaultTask
-import org.gradle.api.NamedDomainObjectContainer
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalog
@@ -37,27 +35,25 @@ class PlatformCommonPartsPlugin : Plugin<Project> {
                 isCanBeResolved = true
             }
             dependencies {
-                @Suppress("UnstableApiUsage")
-                common(project(":common")) {
-                    isTransitive = false
-                }
+                common(project(":common"))
             }
-            tasks.named<DefaultTask>("build") {
-                dependsOn(tasks.named("reobfShadowJar"))
+            tasks.named<ReobfuscatedJar>("reobfJar") {
+                dependsOn(tasks.named(SHADOW_JAR_TASK_NAME))
+                inputJar.set(tasks.named<ShadowJar>("shadowJar").get().archiveFile)
             }
             tasks.named<Jar>("jar") {
-                finalizedBy(tasks.named("reobfJar"))
+                finalizedBy(tasks.named(SHADOW_JAR_TASK_NAME))
             }
             tasks.named<ShadowJar>(SHADOW_JAR_TASK_NAME) {
                 archiveClassifier.set("")
                 configurations.set(listOf(shadowBundle.get()))
-                finalizedBy(tasks.named("reobfShadowJar"))
+                from(project(":common").tasks.named<Jar>("jar").map {
+                    zipTree(it.archiveFile.get().asFile)
+                })
+                finalizedBy(tasks.named("reobfJar"))
             }
             tasks.named("modrinth") {
                 dependsOn(tasks.named("build"))
-            }
-            configure<NamedDomainObjectContainer<RenameJarInPlace>> {
-                create("shadowJar")
             }
             configure<ModrinthExtension> {
                 changelog.set(rootProject.file("CHANGELOG.md").readText())
@@ -65,7 +61,7 @@ class PlatformCommonPartsPlugin : Plugin<Project> {
                 gameVersions.add(libs.findVersion("minecraft").get().toString())
                 projectId.set(rootProject.properties["modrinth_project_id"] as String)
                 syncBodyFrom.set(rootProject.file("README.md").readText())
-                uploadFile.set(tasks.named("reobfShadowJar"))
+                uploadFile.set(tasks.named("reobfJar"))
                 versionNumber.set(version.toString())
                 versionType.set("release")
             }

@@ -11,6 +11,14 @@ repositories {
         name = "Forge"
         url = uri("https://maven.minecraftforge.net")
     }
+    maven {
+        mavenContent {
+            includeGroup("com.gtnewhorizons")
+            includeGroupByRegex("com\\.gtnewhorizons\\..+")
+        }
+        name = "GTNH Maven"
+        url = uri("https://nexus.gtnewhorizons.com/repository/public/")
+    }
     mavenCentral()
 }
 

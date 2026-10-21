@@ -7,7 +7,9 @@ plugins {
 }
 
 minecraft {
-    mappings("stable", "39-1.12")
+    mcVersion.set(libs.versions.minecraft.get())
+    mcpMappingChannel.set("stable")
+    mcpMappingVersion.set("12")
 }
 
 repositories {
@@ -46,4 +48,16 @@ tasks.withType<SourceTask>().configureEach {
 
 tasks.named("sourcesJar") {
     dependsOn("expandInfo")
+}
+
+tasks.named("compileMcLauncherKotlin") {
+    dependsOn("createMcLauncherFiles")
+}
+
+tasks.named("compilePatchedMcKotlin") {
+    dependsOn("decompressDecompiledSources")
+}
+
+tasks.named("compileInjectedTagsKotlin") {
+    dependsOn("injectTags")
 }

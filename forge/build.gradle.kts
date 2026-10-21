@@ -1,3 +1,6 @@
+
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar.Companion.SHADOW_JAR_TASK_NAME
+import com.gtnewhorizons.retrofuturagradle.minecraft.RunMinecraftTask
 import com.modrinth.minotaur.dependencies.DependencyType
 import com.modrinth.minotaur.dependencies.ModDependency
 import dev.ms0503.mcserverautocloser.Constants.DESCRIPTION
@@ -25,42 +28,20 @@ configurations {
 }
 
 minecraft {
-    mappings("stable", "39-1.12")
-    runs {
-        create("server") {
-            mods {
-                create(MOD_ID) {
-                    source(sourceSets["main"])
-                }
-            }
-            workingDirectory(project.file("run"))
-        }
-    }
+    mcVersion.set(libs.versions.minecraft.get())
+    mcpMappingChannel.set("stable")
+    mcpMappingVersion.set("12")
 }
 
 repositories {
-    // // CleanroomMC's Maven repository only has 1.x
-    // maven {
-    //     name = "CleanroomMC"
-    //     url = uri("https://maven.cleanroommc.com")
-    // }
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = uri("https://api.modrinth.com/maven")
-            }
-        }
-        forRepositories(fg.repository)
-        filter {
-            includeGroup("maven.modrinth")
-        }
+    maven {
+        name = "mavenpattern"
+        url = uri("https://mvn.falsepattern.com/releases")
     }
 }
 
 dependencies {
     runtimeOnly(libs.kotlin.forge)
-    shadowBundle(project(":common"))
 }
 
 tasks.processResources {
@@ -81,6 +62,23 @@ modrinth {
         ModDependency("1mPcAmuy", DependencyType.REQUIRED) // Forgelin-Continuous
     )
     loaders.add("forge")
-    token = env.MODRINTH_TOKEN.value
-    versionName = "v${version} for Forge"
+    token.set(env.MODRINTH_TOKEN.value)
+    versionName.set("v${version} for Forge")
+}
+
+tasks.named("compileMcLauncherKotlin") {
+    dependsOn("createMcLauncherFiles")
+}
+
+tasks.named("compilePatchedMcKotlin") {
+    dependsOn("decompressDecompiledSources")
+}
+
+tasks.named("compileInjectedTagsKotlin") {
+    dependsOn("injectTags")
+}
+
+tasks.named<RunMinecraftTask>("runServer") {
+    dependsOn(SHADOW_JAR_TASK_NAME)
+    extraJvmArgs.add("-Djava.awt.headless=true")
 }

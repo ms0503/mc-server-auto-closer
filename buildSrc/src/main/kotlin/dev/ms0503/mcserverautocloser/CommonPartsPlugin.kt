@@ -5,7 +5,6 @@ import dev.ms0503.mcserverautocloser.Constants.MAVEN_GROUP
 import dev.ms0503.mcserverautocloser.Constants.VERSION
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.Configuration
 import org.gradle.api.artifacts.VersionCatalog
 import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.plugins.BasePluginExtension
@@ -15,12 +14,8 @@ import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.api.tasks.javadoc.Javadoc
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.creating
-import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
-import org.gradle.kotlin.dsl.getting
 import org.gradle.kotlin.dsl.named
-import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.repositories
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -35,22 +30,18 @@ class CommonPartsPlugin : Plugin<Project> {
         with(project) {
             plugins.apply {
                 apply("base")
+                apply("com.gtnewhorizons.retrofuturagradle")
                 apply("idea")
                 apply("java")
-                apply("net.minecraftforge.gradle")
                 apply("org.jetbrains.kotlin.jvm")
             }
             group = MAVEN_GROUP
             version = "${VERSION}+${libs.findVersion("minecraft").get()}"
-            val minecraft = configurations.named("minecraft")
             repositories {
                 maven {
                     name = "Forge"
                     url = uri("https://maven.minecraftforge.net")
                 }
-            }
-            dependencies {
-                minecraft(libs.findLibrary("forge").get())
             }
             configure<BasePluginExtension> {
                 archivesName.set("${ARCHIVES_NAME}-${name}")

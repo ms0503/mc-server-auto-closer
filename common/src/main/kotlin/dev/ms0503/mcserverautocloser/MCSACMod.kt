@@ -66,7 +66,7 @@ object MCSACMod {
     fun onPlayerLeaved(server: MinecraftServer) {
         val now = LocalTime.now()
         val waitForDisable = getWaitTimeForDisable(now)
-        if(server.playerList.currentPlayerCount == 1) {
+        if(server.currentPlayerCount == 1) {
             if(MCSACConfig.config.waitTime.milliseconds <= waitForDisable) {
                 this.thread =
                     scope.launch {
