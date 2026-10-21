@@ -65,7 +65,7 @@ class PlatformCommonPartsPlugin : Plugin<Project> {
                 gameVersions.add(libs.findVersion("minecraft").get().toString())
                 projectId.set(rootProject.properties["modrinth_project_id"] as String)
                 syncBodyFrom.set(rootProject.file("README.md").readText())
-                uploadFile.set(tasks.named("reobfShadowJar"))
+                uploadFile.set(tasks.named<ShadowJar>("shadowJar"))
                 versionNumber.set(version.toString())
                 versionType.set("release")
             }
