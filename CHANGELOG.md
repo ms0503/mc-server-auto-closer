@@ -2,6 +2,10 @@
 
 [ja](CHANGELOG.ja.md)
 
+## v0.2.5
+
+- Supported 1.7.10 and 1.12.2
+
 ## v0.2.4
 
 - Fixed an issue where the validity period check was not working properly
