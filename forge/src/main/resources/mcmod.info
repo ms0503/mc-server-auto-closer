@@ -8,8 +8,8 @@
         "modid": "${mod_id}",
         "name": "${mod_name}",
         "requiredMods": [
-            "Forge@[14.23.5.2864,)",
-            "forgelin_continuous@[2.4.20.0,)"
+            "forge@[14.23.0.2486,)",
+            "forgelin_continuous@[1.9.22.0,)"
         ],
         "url": "https://github.com/ms0503/mc-server-auto-closer",
         "useDependencyInformation": true,
