@@ -31,11 +31,17 @@
                 ];
               };
           in
-          {
-            jdk17 = mkJdkShell pkgs.temurin-bin-17;
-            jdk21 = mkJdkShell pkgs.temurin-bin-21;
-            jdk8 = mkJdkShell pkgs.temurin-bin-8;
-          };
+          [
+            17 # 1.20-1.20.4
+            21 # 1.20.5-1.20.6
+            25 # 1.7.10
+            8 # 1.12.2
+          ]
+          |> builtins.map (ver: {
+            name = "jdk${ver}";
+            value = mkJdkShell pkgs."temurin-bin-${ver}";
+          })
+          |> builtins.listToAttrs;
         packages.publisher = pkgs.callPackage ./tools/publisher.nix { };
       };
       systems = import systems;
