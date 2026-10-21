@@ -12,7 +12,7 @@ _help() {
 }
 
 _build() {
-    ./gradlew build --no-daemon --parallel
+    ./gradlew build --no-daemon --no-parallel
 }
 
 _ghr() {
@@ -25,7 +25,7 @@ _ghr() {
 }
 
 _modrinth() {
-    ./gradlew modrinth --no-daemon --parallel
+    ./gradlew modrinth --no-daemon --no-parallel
 }
 
 if [[ $# != 2 ]]; then
