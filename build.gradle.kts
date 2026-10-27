@@ -22,7 +22,7 @@ idea {
         isDownloadSources = true
     }
     project {
-        languageLevel = IdeaLanguageLevel(17)
+        languageLevel = IdeaLanguageLevel(8)
     }
 }
 

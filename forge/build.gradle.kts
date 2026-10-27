@@ -4,6 +4,7 @@ import dev.ms0503.mcserverautocloser.Constants.DESCRIPTION
 import dev.ms0503.mcserverautocloser.Constants.MOD_ID
 import dev.ms0503.mcserverautocloser.Constants.MOD_NAME
 import dev.ms0503.mcserverautocloser.Constants.VERSION
+import org.gradle.kotlin.dsl.minecraft
 
 plugins {
     `common-parts`
@@ -47,7 +48,9 @@ dependencies {
     forge(libs.forge)
     modImplementation(libs.architectury.forge)
     modImplementation(libs.kotlin.forge)
-    shadowBundle(project(configuration = "transformProductionForge", path = ":common"))
+    shadowBundle(project(configuration = "transformProductionForge", path = ":common")) {
+        isTransitive = false
+    }
 }
 
 tasks.processResources {

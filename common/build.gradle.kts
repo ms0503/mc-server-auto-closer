@@ -1,6 +1,7 @@
 import dev.ms0503.mcserverautocloser.Constants.ENABLED_PLATFORMS
 import dev.ms0503.mcserverautocloser.Constants.MOD_ID
 import dev.ms0503.mcserverautocloser.Constants.MOD_NAME
+import org.gradle.kotlin.dsl.minecraft
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -46,6 +47,7 @@ tasks.withType<JavaCompile>().configureEach {
 
 tasks.withType<KotlinCompile>().configureEach {
     dependsOn("expandInfo")
+    kotlinOptions.freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
 }
 
 tasks.withType<SourceTask>().configureEach {

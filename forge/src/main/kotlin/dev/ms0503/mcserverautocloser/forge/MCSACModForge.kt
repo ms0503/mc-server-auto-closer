@@ -1,13 +1,13 @@
 package dev.ms0503.mcserverautocloser.forge
 
-import dev.architectury.platform.forge.EventBuses
 import dev.ms0503.mcserverautocloser.MCSACInfo
 import dev.ms0503.mcserverautocloser.MCSACMod
 import dev.ms0503.mcserverautocloser.MCSACMod.LOG
+import me.shedaniel.architectury.platform.forge.EventBuses
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.event.entity.player.PlayerEvent
-import net.minecraftforge.event.server.ServerStartedEvent
 import net.minecraftforge.fml.common.Mod
+import net.minecraftforge.fml.event.server.FMLServerStartedEvent
 import thedarkcolour.kotlinforforge.forge.MOD_CONTEXT
 
 @Mod(MCSACInfo.MOD_ID)
@@ -21,7 +21,7 @@ class MCSACModForge {
         LOG.info("${MCSACInfo.MOD_NAME} initialized!")
     }
 
-    fun onServerStarted(event: ServerStartedEvent) {
+    fun onServerStarted(event: FMLServerStartedEvent) {
         MCSACMod.onServerStarted(event.server)
     }
 

@@ -1,9 +1,13 @@
+import com.github.javaparser.printer.concretesyntaxmodel.CsmElement.token
 import com.modrinth.minotaur.dependencies.DependencyType
 import com.modrinth.minotaur.dependencies.ModDependency
 import dev.ms0503.mcserverautocloser.Constants.DESCRIPTION
 import dev.ms0503.mcserverautocloser.Constants.MOD_ID
 import dev.ms0503.mcserverautocloser.Constants.MOD_NAME
 import dev.ms0503.mcserverautocloser.Constants.VERSION
+import org.gradle.internal.fingerprint.classpath.impl.ClasspathFingerprintingStrategy.compileClasspath
+import org.gradle.internal.fingerprint.classpath.impl.ClasspathFingerprintingStrategy.runtimeClasspath
+import org.gradle.kotlin.dsl.minecraft
 
 plugins {
     `common-parts`
@@ -39,7 +43,9 @@ dependencies {
     modImplementation(libs.fabric.api)
     modImplementation(libs.fabric.loader)
     modImplementation(libs.kotlin.fabric)
-    shadowBundle(project(configuration = "transformProductionFabric", path = ":common"))
+    shadowBundle(project(configuration = "transformProductionFabric", path = ":common")) {
+        isTransitive = false
+    }
 }
 
 tasks.processResources {
