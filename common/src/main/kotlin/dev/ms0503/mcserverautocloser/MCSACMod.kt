@@ -3,6 +3,7 @@ package dev.ms0503.mcserverautocloser
 import java.time.Duration
 import java.time.LocalTime
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.ExperimentalTime
 import kotlin.time.toKotlinDuration
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
@@ -25,11 +26,13 @@ object MCSACMod {
         LOG.info("Loaded setting: Wait for joining player: ${MCSACConfig.config.waitTime} ms")
     }
 
+    @OptIn(ExperimentalTime::class)
     suspend fun stop(server: MinecraftServer) {
         delay(MCSACConfig.config.waitTime.milliseconds)
-        server.commands.performPrefixedCommand(server.createCommandSourceStack(), "stop")
+        server.commands.performCommand(server.createCommandSourceStack(), "stop")
     }
 
+    @OptIn(ExperimentalTime::class)
     fun onServerStarted(server: MinecraftServer) {
         val now = LocalTime.now()
         if(isBetween(now, MCSACConfig.config.enableTimeStart, MCSACConfig.config.enableTimeEnd)) {
@@ -64,6 +67,7 @@ object MCSACMod {
         this.thread = null
     }
 
+    @OptIn(ExperimentalTime::class)
     fun onPlayerLeaved(server: MinecraftServer) {
         val now = LocalTime.now()
         val waitForDisable = getWaitTimeForDisable(now)
@@ -94,11 +98,13 @@ object MCSACMod {
         }
     }
 
+    @OptIn(ExperimentalTime::class)
     private fun getWaitTimeForDisable(now: LocalTime) =
         Duration.between(now, MCSACConfig.config.enableTimeEnd).toKotlinDuration().let {
             if(it.isNegative()) DAY_MS.milliseconds + it else it
         }
 
+    @OptIn(ExperimentalTime::class)
     private fun getWaitTimeForEnable(now: LocalTime) =
         Duration.between(now, MCSACConfig.config.enableTimeStart).toKotlinDuration().let {
             if(it.isNegative()) DAY_MS.milliseconds + it else it
@@ -106,8 +112,8 @@ object MCSACMod {
 
     private fun isBetween(time: LocalTime, start: LocalTime, end: LocalTime) =
         if(start < end) {
-            time in start..<end
+            start <= time && time < end
         } else {
-            time !in end..<start
+            start <= time || time < end
         }
 }
