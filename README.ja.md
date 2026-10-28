@@ -17,9 +17,9 @@ Minecraftサーバーが無人状態で一定時間経過した場合に、自�
 
 ### Fabric
 
-- Fabric Loader 0.14.24〜
+- Fabric Loader 0.14.21〜
 - Fabric API 0.83.0+1.20〜
-- Fabric Language Kotlin 1.11.0+kotlin.2.0.0〜
+- Fabric Language Kotlin 1.9.4+kotlin.1.8.21〜
 
 ### Forge
 
