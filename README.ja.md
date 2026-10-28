@@ -11,20 +11,20 @@ Minecraftサーバーが無人状態で一定時間経過した場合に、自�
 
 ## 依存関係
 
-- Minecraft 1.20〜1.20.1
-- Architectury API 9.0.6〜
+- Minecraft 1.19.3
+- Architectury API 7.0.63〜
 - 以下のMODローダーごとの追加依存
 
 ### Fabric
 
-- Fabric Loader 0.14.24〜
-- Fabric API 0.83.0+1.20〜
-- Fabric Language Kotlin 1.11.0+kotlin.2.0.0〜
+- Fabric Loader 0.14.10〜
+- Fabric API 0.68.1+1.19.3〜
+- Fabric Language Kotlin 1.8.7+kotlin.1.7.22〜
 
 ### Forge
 
-- Forge 1.20-46.0.1〜
-- Kotlin for Forge 4.3.0〜
+- Forge 1.19.3-44.0.0〜
+- Kotlin for Forge 3.8.0〜
 
 ## 設定
 

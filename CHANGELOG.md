@@ -2,6 +2,10 @@
 
 [ja](CHANGELOG.ja.md)
 
+## v0.2.6 (wip)
+
+- Supported 1.19.3
+
 ## v0.2.5
 
 - Supported 1.7.10 and 1.12.2
