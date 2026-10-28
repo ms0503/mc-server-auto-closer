@@ -27,7 +27,7 @@ object MCSACMod {
 
     suspend fun stop(server: MinecraftServer) {
         delay(MCSACConfig.config.waitTime.milliseconds)
-        server.commands.performPrefixedCommand(server.createCommandSourceStack(), "stop")
+        server.commands.performCommand(server.createCommandSourceStack(), "stop")
     }
 
     fun onServerStarted(server: MinecraftServer) {
@@ -106,8 +106,8 @@ object MCSACMod {
 
     private fun isBetween(time: LocalTime, start: LocalTime, end: LocalTime) =
         if(start < end) {
-            time in start..<end
+            start <= time && time < end
         } else {
-            time !in end..<start
+            start <= time || time < end
         }
 }
