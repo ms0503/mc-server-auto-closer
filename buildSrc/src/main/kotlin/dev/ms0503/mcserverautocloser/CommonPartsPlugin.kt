@@ -19,7 +19,6 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.named
 import org.gradle.kotlin.dsl.withType
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 class CommonPartsPlugin : Plugin<Project> {
@@ -58,7 +57,7 @@ class CommonPartsPlugin : Plugin<Project> {
                 options.encoding = "UTF-8"
             }
             tasks.withType<KotlinCompile>().configureEach {
-                compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
+                kotlinOptions.jvmTarget = "17"
             }
             tasks.named<Jar>("jar") {
                 archiveClassifier.set("dev")

@@ -106,8 +106,8 @@ object MCSACMod {
 
     private fun isBetween(time: LocalTime, start: LocalTime, end: LocalTime) =
         if(start < end) {
-            time in start..<end
+            start <= time && time < end
         } else {
-            time !in end..<start
+            start <= time || time < end
         }
 }

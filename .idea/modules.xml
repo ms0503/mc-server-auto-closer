@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mc-server-auto-closer.iml" filepath="$PROJECT_DIR$/.idea/modules/mc-server-auto-closer.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/buildSrc/mc-server-auto-closer.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/buildSrc/mc-server-auto-closer.buildSrc.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/mc-server-auto-closer.common.iml" filepath="$PROJECT_DIR$/.idea/modules/common/mc-server-auto-closer.common.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/mc-server-auto-closer.common.main.iml" filepath="$PROJECT_DIR$/.idea/modules/common/mc-server-auto-closer.common.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/common/mc-server-auto-closer.common.test.iml" filepath="$PROJECT_DIR$/.idea/modules/common/mc-server-auto-closer.common.test.iml" />
