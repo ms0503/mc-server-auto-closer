@@ -1,6 +1,6 @@
 issueTrackerURL = "https://github.com/ms0503/mc-server-auto-closer/issues"
 license = "MIT"
-loaderVersion = "[4.3,)"
+loaderVersion = "[3.8,)"
 modLoader = "kotlinforforge"
 
 [[dependencies."${mod_id}"]]
@@ -8,21 +8,21 @@ mandatory = true
 modId = "architectury"
 ordering = "AFTER"
 side = "BOTH"
-versionRange = "[9.0.6,)"
+versionRange = "[4.4.61,)"
 
 [[dependencies."${mod_id}"]]
 mandatory = true
 modId = "forge"
 ordering = "NONE"
 side = "SERVER"
-versionRange = "[46.0.1,)"
+versionRange = "[40,)"
 
 [[dependencies."${mod_id}"]]
 mandatory = true
 modId = "minecraft"
 ordering = "NONE"
 side = "SERVER"
-versionRange = "[1.20,1.20.1]"
+versionRange = "[1.18.2]"
 
 [[mods]]
 authors = "Sora Tonami"
