@@ -23,11 +23,11 @@ object MCSACModFabric : ModInitializer {
         MCSACMod.onServerStarted(server)
     }
 
-    fun onPlayerJoined(handler: ServerGamePacketListener, sender: PacketSender, server: MinecraftServer) {
+    fun onPlayerJoined(@Suppress("unused") handler: ServerGamePacketListener, @Suppress("unused") sender: PacketSender, server: MinecraftServer) {
         MCSACMod.onPlayerJoined(server)
     }
 
-    fun onPlayerLeaved(handler: ServerGamePacketListener, server: MinecraftServer) {
+    fun onPlayerLeaved(@Suppress("unused") handler: ServerGamePacketListener, server: MinecraftServer) {
         MCSACMod.onPlayerLeaved(server)
     }
 }

@@ -104,6 +104,7 @@ object MCSACMod {
             if(it.isNegative()) DAY_MS.milliseconds + it else it
         }
 
+    @OptIn(ExperimentalStdlibApi::class)
     private fun isBetween(time: LocalTime, start: LocalTime, end: LocalTime) =
         if(start < end) {
             time in start..<end
