@@ -2,8 +2,10 @@
 
 [![License](https://img.shields.io/badge/License-MIT-00cc00.svg)](LICENSE.md)
 [![Modrinth downloads](https://img.shields.io/modrinth/dt/eNYGqJbG?label=Modrinth+downloads&logo=modrinth)](https://modrinth.com/project/eNYGqJbG)
-![Supported platforms](https://img.shields.io/badge/Fabric_%2F_Forge_%2F_NeoForged-_1.20–1.20.1,1.20.2,1.20.4-blue)
-![Supported platforms](https://img.shields.io/badge/Fabric_%2F_NeoForged-_1.20.5–1.20.6-blue)
+![Supported platforms](https://img.shields.io/badge/Forge-1.7.10,1.12.2-blue)
+![Supported platforms](https://img.shields.io/badge/Fabric_%2F_Forge-1.16.5,1.17.1,1.18–1.18.2,1.19–1.19.4-blue)
+![Supported platforms](https://img.shields.io/badge/Fabric_%2F_Forge_%2F_NeoForged-1.20–1.20.2,1.20.4-blue)
+![Supported platforms](https://img.shields.io/badge/Fabric_%2F_NeoForged-1.20.5–1.20.6-blue)
 
 [en](README.md)
 
@@ -34,7 +36,7 @@ Minecraftサーバーが無人状態で一定時間経過した場合に、自�
 
 無人状態になってから停止させるまで待機する時間です。\
 単位はmsです。\
-初期値は`900000`ms(=15分)です。
+初期値は`900000`ms (=15分)です。
 
 ### `enableTimeStart`/`enableTimeEnd`
 
