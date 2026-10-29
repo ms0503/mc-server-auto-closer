@@ -26,6 +26,7 @@
                 JAVA_HOME = jdk;
                 packages = [
                   jdk
+                  pkgs.awscli2
                   pkgs.gh
                   self'.packages.publisher
                 ];
