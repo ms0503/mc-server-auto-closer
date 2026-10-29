@@ -7,7 +7,7 @@
 ![Supported platforms](https://img.shields.io/badge/Fabric_%2F_Forge_%2F_NeoForged-1.20–1.20.2,1.20.4-blue)
 ![Supported platforms](https://img.shields.io/badge/Fabric_%2F_NeoForged-1.20.5–1.20.6-blue)
 
-[ja](README.ja.md)
+[ja](https://github.com/ms0503/mc-server-auto-closer/blob/HEAD/README.ja.md)
 
 This is a mod that automatically shuts down the Minecraft server if it remains unattended for a set period of time.
 
