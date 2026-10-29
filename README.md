@@ -17,9 +17,9 @@ This is a mod that automatically shuts down the Minecraft server if it remains u
 
 ### Fabric
 
-- Fabric Loader 0.14.24 or later
+- Fabric Loader 0.15.6 or later
 - Fabric API 0.97.8+1.20.6 or later
-- Fabric Language Kotlin 1.11.0+kotlin.2.0.0 or later
+- Fabric Language Kotlin 1.10.19+kotlin.1.9.23 or later
 
 ### NeoForged
 
