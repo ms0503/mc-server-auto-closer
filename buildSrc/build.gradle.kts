@@ -25,6 +25,7 @@ repositories {
 dependencies {
     implementation(gradleApi())
     implementation(libs.architectury.loom)
+    implementation(libs.dotenv.plugin)
     implementation(libs.kotlin.plugin)
     implementation(libs.minotaur)
     implementation(libs.shadow.plugin)
