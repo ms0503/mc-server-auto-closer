@@ -2,6 +2,11 @@
 
 [ja](CHANGELOG.ja.md)
 
+## v0.2.6 (wip)
+
+- Supported 1.16.5, 1.17.1, 1.18-1.18.2 and 1.19-1.19.4
+- (1.20 and later) Adjusted the minimum version of dependencies
+
 ## v0.2.5
 
 - Supported 1.7.10 and 1.12.2
