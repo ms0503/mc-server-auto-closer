@@ -16,6 +16,7 @@ repositories {
 
 dependencies {
     implementation(gradleApi())
+    implementation(libs.dotenv.plugin)
     implementation(libs.forge.gradle)
     implementation(libs.kotlin.plugin)
     implementation(libs.minotaur)
