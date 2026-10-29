@@ -2,7 +2,7 @@
 
 [ja](https://github.com/ms0503/mc-server-auto-closer/blob/HEAD/CHANGELOG.ja.md)
 
-## v0.2.6 (wip)
+## v0.2.6
 
 - Supported 1.16.5, 1.17.1, 1.18-1.18.2 and 1.19-1.19.4
 - (1.20 and later) Adjusted the minimum version of dependencies
