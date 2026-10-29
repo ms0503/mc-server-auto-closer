@@ -1,6 +1,6 @@
 # Changelog
 
-[en](CHANGELOG.md)
+[en](https://github.com/ms0503/mc-server-auto-closer/blob/HEAD/CHANGELOG.md)
 
 ## v0.2.6 (wip)
 
