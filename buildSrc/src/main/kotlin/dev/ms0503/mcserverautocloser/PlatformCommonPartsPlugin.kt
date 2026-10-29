@@ -1,7 +1,7 @@
 package dev.ms0503.mcserverautocloser
 
+import com.github.jengelman.gradle.plugins.shadow.ShadowJavaPlugin.SHADOW_JAR_TASK_NAME
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar.Companion.SHADOW_JAR_TASK_NAME
 import com.modrinth.minotaur.ModrinthExtension
 import net.fabricmc.loom.task.RemapJarTask
 import net.fabricmc.loom.task.RemapTaskConfiguration.REMAP_JAR_TASK_NAME
@@ -48,7 +48,7 @@ class PlatformCommonPartsPlugin : Plugin<Project> {
             }
             tasks.named<ShadowJar>(SHADOW_JAR_TASK_NAME) {
                 archiveClassifier.set("dev-shadow")
-                configurations.set(listOf(shadowBundle.get()))
+                configurations = listOf(shadowBundle.get())
             }
             tasks.named<RemapJarTask>(REMAP_JAR_TASK_NAME) {
                 inputFile.set(tasks.named<ShadowJar>(SHADOW_JAR_TASK_NAME).get().archiveFile)
