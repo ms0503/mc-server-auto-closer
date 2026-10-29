@@ -2,7 +2,7 @@
 
 [en](https://github.com/ms0503/mc-server-auto-closer/blob/HEAD/CHANGELOG.md)
 
-## v0.2.6 (wip)
+## v0.2.6
 
 - 1.16.5・1.17.1・1.18-1.18.2・1.19-1.19.4をサポート
 - (1.20以降) 依存関係の最小バージョンを調整
