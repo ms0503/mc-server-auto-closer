@@ -1,3 +1,7 @@
+[libraries.dotenv-plugin]
+module = "co.uzzu.dotenv.gradle:co.uzzu.dotenv.gradle.gradle.plugin"
+version.ref = "dotenv"
+
 [libraries.forge]
 module = "net.minecraftforge:forge"
 version.ref = "forge"
