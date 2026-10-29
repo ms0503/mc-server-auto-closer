@@ -7,7 +7,7 @@
 ![Supported platforms](https://img.shields.io/badge/Fabric_%2F_Forge_%2F_NeoForged-1.20–1.20.2,1.20.4-blue)
 ![Supported platforms](https://img.shields.io/badge/Fabric_%2F_NeoForged-1.20.5–1.20.6-blue)
 
-[en](README.md)
+[en](https://github.com/ms0503/mc-server-auto-closer/blob/HEAD/README.md)
 
 Minecraftサーバーが無人状態で一定時間経過した場合に、自動でサーバーを停止させるMODです。
 
