@@ -5,9 +5,9 @@ import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
 plugins {
     `java-library`
     alias(libs.plugins.architectury)
-    alias(libs.plugins.dotenv)
     base
     id(libs.plugins.architectury.loom.get().pluginId) apply false // common-partsがclasspathに追加しているためID参照のみ
+    id(libs.plugins.dotenv.get().pluginId) // common-partsがclasspathに追加しているためID参照のみ
     idea
     java
     kotlin("jvm")
